@@ -1,0 +1,5 @@
+# Copy this file to a new file named sauce.properties and modify appropriately for your SauceLabs account.
+# DO NOT delete this file.
+
+SAUCE_USER_NAME=sauce_user_name
+SAUCE_PRIVATE_KEY=sauce_private_key
