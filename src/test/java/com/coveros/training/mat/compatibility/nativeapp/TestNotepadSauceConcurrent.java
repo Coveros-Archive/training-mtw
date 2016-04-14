@@ -47,8 +47,8 @@ public class TestNotepadSauceConcurrent implements SauceOnDemandSessionIdProvide
 	 * environment variables or from an external file, use the no-arg
 	 * {@link SauceOnDemandAuthentication} constructor.
 	 */
-	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(SauceProperties.getString("SAUCE_USER_NAME"), //$NON-NLS-1$
-			SauceProperties.getString("SAUCE_PRIVATE_KEY"));
+	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
+			SauceProperties.getString("SAUCE_USER_NAME"), SauceProperties.getString("SAUCE_PRIVATE_KEY"));
 
 	/**
 	 * JUnit Rule which will mark the Sauce Job as passed/failed when the test
@@ -153,7 +153,7 @@ public class TestNotepadSauceConcurrent implements SauceOnDemandSessionIdProvide
 		caps.setCapability("browserName", "");
 		caps.setCapability("platformVersion", version);
 		caps.setCapability("platformName", os);
-		
+
 		// Reference your APK file here
 		caps.setCapability("app", "sauce-storage:YourApp.apk");
 		caps.setCapability("name", testName);

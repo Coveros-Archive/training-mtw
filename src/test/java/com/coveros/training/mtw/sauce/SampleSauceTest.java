@@ -42,15 +42,15 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 	 * environment variables or from an external file, use the no-arg
 	 * {@link SauceOnDemandAuthentication} constructor.
 	 */
-	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(SauceProperties.getString("SAUCE_USER_NAME"), //$NON-NLS-1$
+	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
+			SauceProperties.getString("SAUCE_USER_NAME"),
 			SauceProperties.getString("SAUCE_PRIVATE_KEY"));
 	/**
 	 * JUnit Rule which will mark the Sauce Job as passed/failed when the test
 	 * succeeds or fails.
 	 */
 	@Rule
-	public SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(
-			this, authentication);
+	public SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(this, authentication);
 
 	/**
 	 * Represents the browser to be used as part of the test run.
@@ -75,6 +75,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 	 */
 	private WebDriver driver;
 	private StringBuffer verificationErrors = new StringBuffer();
+
 	/**
 	 * Constructs a new instance of the test. The constructor requires three
 	 * string parameters, which represent the operating system, version and
@@ -128,10 +129,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 		}
 		capabilities.setCapability(CapabilityType.PLATFORM, os);
 		capabilities.setCapability("name", "Sauce Sample Test");
-		this.driver = new RemoteWebDriver(new URL("http://"
-				+ authentication.getUsername() + ":"
-				+ authentication.getAccessKey()
-				+ "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+		this.driver = new RemoteWebDriver(new URL("http://" + authentication.getUsername() + ":"
+				+ authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
 		this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
 	}
@@ -144,8 +143,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 	@Test
 	public void amazon() throws Exception {
 		driver.get("http://www.amazon.com/");
-		assertEquals(
-				"Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more",
+		assertEquals("Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more",
 				driver.getTitle());
 	}
 
@@ -158,29 +156,36 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 	public void tearDown() throws Exception {
 		driver.quit();
 	}
-	
-	@Test
-	  public void testAmazonThreeSpeakers() throws Exception {
-	    driver.get("http://www.amazon.com");
-	    // ERROR: Caught exception [ERROR: Unsupported command [deleteAllVisibleCookies |  | ]]
-	    driver.findElement(By.id("twotabsearchtextbox")).clear();
-	    driver.findElement(By.id("twotabsearchtextbox")).sendKeys("speakers");
-	    driver.findElement(By.cssSelector("input.nav-input")).click();
-	    driver.findElement(By.xpath("//li[@id='result_2']/div/div/div/div[2]/div/a/h2")).click();
-	    new Select(driver.findElement(By.id("quantity"))).selectByVisibleText("3");
-	    driver.findElement(By.id("add-to-cart-button")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) fail("timeout");
-	    	try { if ("Cart subtotal".equals(driver.findElement(By.cssSelector("b")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
 
-	    try {
-	      assertEquals("Cart subtotal (3 items):", driver.findElement(By.xpath("//div[@id='hlb-subcart']/div/span/span")).getText());
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	  }
+	@Test
+	public void testAmazonThreeSpeakers() throws Exception {
+		driver.get("http://www.amazon.com");
+		// ERROR: Caught exception [ERROR: Unsupported command
+		// [deleteAllVisibleCookies | | ]]
+		driver.findElement(By.id("twotabsearchtextbox")).clear();
+		driver.findElement(By.id("twotabsearchtextbox")).sendKeys("speakers");
+		driver.findElement(By.cssSelector("input.nav-input")).click();
+		driver.findElement(By.xpath("//li[@id='result_2']/div/div/div/div[2]/div/a/h2")).click();
+		new Select(driver.findElement(By.id("quantity"))).selectByVisibleText("3");
+		driver.findElement(By.id("add-to-cart-button")).click();
+		for (int second = 0;; second++) {
+			if (second >= 60)
+				fail("timeout");
+			try {
+				if ("Cart subtotal".equals(driver.findElement(By.cssSelector("b")).getText()))
+					break;
+			} catch (Exception e) {
+			}
+			Thread.sleep(1000);
+		}
+
+		try {
+			assertEquals("Cart subtotal (3 items):",
+					driver.findElement(By.xpath("//div[@id='hlb-subcart']/div/span/span")).getText());
+		} catch (Error e) {
+			verificationErrors.append(e.toString());
+		}
+	}
 
 	/**
 	 *

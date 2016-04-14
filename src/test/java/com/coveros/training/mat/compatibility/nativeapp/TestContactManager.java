@@ -70,7 +70,7 @@ public class TestContactManager {
 		List<WebElement> contactEntries = driver
 				.findElementsById("com.example.android.contactmanager:id/contactEntryText");
 		assertEquals("Some Name", contactEntries.get(0).getText());
-		//driver.close();
+		// driver.close();
 		// insert assertions here
 	}
 }

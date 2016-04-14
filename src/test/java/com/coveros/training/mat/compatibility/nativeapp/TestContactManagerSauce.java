@@ -41,8 +41,8 @@ public class TestContactManagerSauce {
 	 * environment variables or from an external file, use the no-arg
 	 * {@link SauceOnDemandAuthentication} constructor.
 	 */
-	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(SauceProperties.getString("SAUCE_USER_NAME"), //$NON-NLS-1$
-			SauceProperties.getString("SAUCE_PRIVATE_KEY"));
+	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
+			SauceProperties.getString("SAUCE_USER_NAME"), SauceProperties.getString("SAUCE_PRIVATE_KEY"));
 	/**
 	 * JUnit Rule which will mark the Sauce Job as passed/failed when the test
 	 * succeeds or fails.

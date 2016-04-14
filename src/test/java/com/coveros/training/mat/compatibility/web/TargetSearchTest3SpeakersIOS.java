@@ -3,7 +3,6 @@ package com.coveros.training.mat.compatibility.web;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.net.URL;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +15,6 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -42,8 +40,8 @@ public class TargetSearchTest3SpeakersIOS implements SauceOnDemandSessionIdProvi
 	 * environment variables or from an external file, use the no-arg
 	 * {@link SauceOnDemandAuthentication} constructor.
 	 */
-	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(SauceProperties.getString("SAUCE_USER_NAME"), //$NON-NLS-1$
-			SauceProperties.getString("SAUCE_PRIVATE_KEY"));
+	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
+			SauceProperties.getString("SAUCE_USER_NAME"), SauceProperties.getString("SAUCE_PRIVATE_KEY"));
 
 	/**
 	 * JUnit Rule which will mark the Sauce Job as passed/failed when the test
@@ -99,10 +97,10 @@ public class TargetSearchTest3SpeakersIOS implements SauceOnDemandSessionIdProvi
 		LinkedList browsers = new LinkedList();
 		// browsers.add(new String[] { "Windows 8.1", "11", "internet explorer"
 		// });
-		//browsers.add(new String[] { "Windows XP", "37.0", "firefox" });
+		// browsers.add(new String[] { "Windows XP", "37.0", "firefox" });
 		// browsers.add(new String[] { "Linux", "12.15", "opera" });
-		//browsers.add(new String[] { "Linux", "34", "chrome" });
-		//browsers.add(new String[] { "OSX 10.10", "8", "safari" });
+		// browsers.add(new String[] { "Linux", "34", "chrome" });
+		// browsers.add(new String[] { "OSX 10.10", "8", "safari" });
 		browsers.add(new String[] { "OS X 10.9", "7.1", "iphone" });
 		// browsers.add(new String[] { "Linux", "4.4", "android" });
 		return browsers;
@@ -117,8 +115,10 @@ public class TargetSearchTest3SpeakersIOS implements SauceOnDemandSessionIdProvi
 		}
 		capabilities.setCapability(CapabilityType.PLATFORM, os);
 		capabilities.setCapability("name", "Target Three Speakers Test - " + os + ": " + browser + " " + version);
-//		this.driver = new RemoteWebDriver(new URL("http://" + authentication.getUsername() + ":"
-//				+ authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
+		// this.driver = new RemoteWebDriver(new URL("http://" +
+		// authentication.getUsername() + ":"
+		// + authentication.getAccessKey() +
+		// "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
 		this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 		// driver = new FirefoxDriver();
 

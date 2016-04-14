@@ -8,25 +8,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.coveros.training.SauceProperties;
 import com.saucelabs.common.SauceOnDemandAuthentication;
-import com.saucelabs.junit.ConcurrentParameterized;
 
 import io.appium.java_client.android.AndroidDriver;
-
 
 public final class TestNotepadSauce {
 
@@ -36,7 +30,6 @@ public final class TestNotepadSauce {
 
 	private static AndroidDriver<WebElement> driver;
 	private static String sessionId;
-	
 
 	/**
 	 * Constructs a {@link SauceOnDemandAuthentication} instance using the
@@ -44,9 +37,9 @@ public final class TestNotepadSauce {
 	 * environment variables or from an external file, use the no-arg
 	 * {@link SauceOnDemandAuthentication} constructor.
 	 */
-	public static SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(SauceProperties.getString("SAUCE_USER_NAME"), //$NON-NLS-1$
-			SauceProperties.getString("SAUCE_PRIVATE_KEY"));
-	
+	public static SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
+			SauceProperties.getString("SAUCE_USER_NAME"), SauceProperties.getString("SAUCE_PRIVATE_KEY"));
+
 	@BeforeClass
 	public static final void setUpDriver() throws MalformedURLException {
 

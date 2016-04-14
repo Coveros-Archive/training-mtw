@@ -34,7 +34,8 @@ public class TestThreeSpeakersSauceLabs {
 	 * environment variables or from an external file, use the no-arg
 	 * {@link SauceOnDemandAuthentication} constructor.
 	 */
-	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(SauceProperties.getString("SAUCE_USER_NAME"), //$NON-NLS-1$
+	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
+			SauceProperties.getString("SAUCE_USER_NAME"), //$NON-NLS-1$
 			SauceProperties.getString("SAUCE_PRIVATE_KEY"));
 	private WebDriver driver;
 	private String baseUrl;
@@ -42,6 +43,7 @@ public class TestThreeSpeakersSauceLabs {
 	private StringBuffer verificationErrors = new StringBuffer();
 
 	private int numSpeakers;
+
 	/**
 	 * Represents the browser to be used as part of the test run.
 	 */
@@ -76,9 +78,9 @@ public class TestThreeSpeakersSauceLabs {
 			capabilities.setCapability(CapabilityType.VERSION, version);
 		}
 		capabilities.setCapability(CapabilityType.PLATFORM, os);
-		capabilities.setCapability("name", "Sauce Sample Test"); //$NON-NLS-1$ //$NON-NLS-2$
-		this.driver = new RemoteWebDriver(new URL("http://" + authentication.getUsername() + ":" //$NON-NLS-1$ //$NON-NLS-2$
-				+ authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"), capabilities); //$NON-NLS-1$
+		capabilities.setCapability("name", "Sauce Sample Test");
+		this.driver = new RemoteWebDriver(new URL("http://" + authentication.getUsername() + ":"
+				+ authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"), capabilities);
 		this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 		baseUrl = "http://www.target.com/"; //$NON-NLS-1$
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -86,26 +88,28 @@ public class TestThreeSpeakersSauceLabs {
 
 	@Test
 	public void testThreeSpeakers() throws Exception {
-		driver.get(baseUrl + "/"); //$NON-NLS-1$
+		driver.get(baseUrl + "/");
 		// ERROR: Caught exception [ERROR: Unsupported command
 		// [deleteAllVisibleCookies | | ]]
-		driver.findElement(By.id("searchTerm")).clear(); //$NON-NLS-1$
-		driver.findElement(By.id("searchTerm")).sendKeys("speakers"); //$NON-NLS-1$ //$NON-NLS-2$
-		driver.findElement(By.id("goSearch")).click(); //$NON-NLS-1$
-		driver.findElement(By.cssSelector("div.tileInfo > #prodTitle-slp_medium-1-2")).click(); //$NON-NLS-1$
-		String nameOfSpeaker = driver.findElement(By.cssSelector("span.fn")).getText(); //$NON-NLS-1$
+		driver.findElement(By.id("searchTerm")).clear();
+		driver.findElement(By.id("searchTerm")).sendKeys("speakers");
+		driver.findElement(By.id("goSearch")).click();
+		driver.findElement(By.cssSelector("div.tileInfo > #prodTitle-slp_medium-1-2")).click();
+		String nameOfSpeaker = driver.findElement(By.cssSelector("span.fn")).getText();
 		for (int i = 1; i < numSpeakers - 1; i++) {
-			driver.findElement(By.cssSelector("button.plus")).click(); //$NON-NLS-1$
+			driver.findElement(By.cssSelector("button.plus")).click();
 		}
-		driver.findElement(By.cssSelector("button.plus")).click(); //$NON-NLS-1$
-		driver.findElement(By.id("addToCart")).click(); //$NON-NLS-1$
+		driver.findElement(By.cssSelector("button.plus")).click();
+		driver.findElement(By.id("addToCart")).click();
 		for (int second = 0;; second++) {
-			if (second >= 60)
-				fail("timeout"); //$NON-NLS-1$
+			if (second >= 60) {
+				fail("timeout");
+			}
 			try {
-				if (driver.findElement(By.xpath("//div[@id='addtocart']/div/div/div[2]/h3")).getText() //$NON-NLS-1$
-						.matches("^cart summary[\\s\\S]*$")) //$NON-NLS-1$
+				if (driver.findElement(By.xpath("//div[@id='addtocart']/div/div/div[2]/h3")).getText()
+						.matches("^cart summary[\\s\\S]*$")) {
 					break;
+				}
 			} catch (Exception e) {
 			}
 			Thread.sleep(1000);
