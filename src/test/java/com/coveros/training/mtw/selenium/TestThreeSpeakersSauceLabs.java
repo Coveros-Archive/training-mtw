@@ -35,8 +35,8 @@ public class TestThreeSpeakersSauceLabs {
 	 * {@link SauceOnDemandAuthentication} constructor.
 	 */
 	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
-			SauceProperties.getString("SAUCE_USER_NAME"), //$NON-NLS-1$
-			SauceProperties.getString("SAUCE_PRIVATE_KEY"));
+			SauceProperties.getString(SauceProperties.USER_NAME),
+			SauceProperties.getString(SauceProperties.ACCESS_KEY));
 	private WebDriver driver;
 	private String baseUrl;
 	private boolean acceptNextAlert = true;

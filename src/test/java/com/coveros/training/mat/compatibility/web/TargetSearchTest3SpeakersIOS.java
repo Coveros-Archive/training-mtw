@@ -40,8 +40,7 @@ public class TargetSearchTest3SpeakersIOS implements SauceOnDemandSessionIdProvi
 	 * environment variables or from an external file, use the no-arg
 	 * {@link SauceOnDemandAuthentication} constructor.
 	 */
-	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
-			SauceProperties.getString("SAUCE_USER_NAME"), SauceProperties.getString("SAUCE_PRIVATE_KEY"));
+	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("brianhicks", "bad45238-c5f2-4fb4-887b-0480c1a2d085");
 
 	/**
 	 * JUnit Rule which will mark the Sauce Job as passed/failed when the test
@@ -95,12 +94,12 @@ public class TargetSearchTest3SpeakersIOS implements SauceOnDemandSessionIdProvi
 	@ConcurrentParameterized.Parameters
 	public static LinkedList browsersStrings() {
 		LinkedList browsers = new LinkedList();
-		// browsers.add(new String[] { "Windows 8.1", "11", "internet explorer"
-		// });
-		// browsers.add(new String[] { "Windows XP", "37.0", "firefox" });
-		// browsers.add(new String[] { "Linux", "12.15", "opera" });
-		// browsers.add(new String[] { "Linux", "34", "chrome" });
-		// browsers.add(new String[] { "OSX 10.10", "8", "safari" });
+		 browsers.add(new String[] { "Windows 8.1", "11", "internet explorer"
+		 });
+		 browsers.add(new String[] { "Windows XP", "37.0", "firefox" });
+		 browsers.add(new String[] { "Linux", "12.15", "opera" });
+		 browsers.add(new String[] { "Linux", "34", "chrome" });
+		 browsers.add(new String[] { "OSX 10.10", "8", "safari" });
 		browsers.add(new String[] { "OS X 10.9", "7.1", "iphone" });
 		// browsers.add(new String[] { "Linux", "4.4", "android" });
 		return browsers;

@@ -38,8 +38,8 @@ public final class TestNotepadSauce {
 	 * {@link SauceOnDemandAuthentication} constructor.
 	 */
 	public static SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
-			SauceProperties.getString("SAUCE_USER_NAME"), SauceProperties.getString("SAUCE_PRIVATE_KEY"));
-
+			SauceProperties.getString(SauceProperties.USER_NAME), SauceProperties.getString(SauceProperties.ACCESS_KEY));
+	
 	@BeforeClass
 	public static final void setUpDriver() throws MalformedURLException {
 

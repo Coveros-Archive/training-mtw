@@ -42,7 +42,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
 	 * {@link SauceOnDemandAuthentication} constructor.
 	 */
 	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
-			SauceProperties.getString("SAUCE_USER_NAME"), SauceProperties.getString("SAUCE_PRIVATE_KEY"));
+			SauceProperties.getString(SauceProperties.USER_NAME), SauceProperties.getString(SauceProperties.ACCESS_KEY));
 	/**
 	 * JUnit Rule which will mark the Sauce Job as passed/failed when the test
 	 * succeeds or fails.
