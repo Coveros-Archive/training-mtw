@@ -2,4 +2,4 @@
 # DO NOT delete this file.
 
 SAUCE_USER_NAME=sauce_user_name
-SAUCE_PRIVATE_KEY=sauce_private_key
+SAUCE_ACCESS_KEY=sauce_private_key
