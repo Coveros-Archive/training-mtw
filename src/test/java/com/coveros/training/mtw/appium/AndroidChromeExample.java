@@ -38,129 +38,24 @@ import io.appium.java_client.remote.MobileCapabilityType;
  * @author brian
  *
  */
-public class AndroidChromeExample {
-	private WebDriver driver;
-	private String baseUrl;
-
-	private StringBuffer verificationErrors = new StringBuffer();
-
-	// Default Selenium timeout for "wait" commands (in seconds)
-	private static int TIMEOUT = 10;
+public final class AndroidChromeExample extends MobileWebTestExample {
 
 	// Change this if using a different virtual device.
 	private static final String DEVICE_NAME = "Samsung Galaxy S6 - 6.0.0 - API 23 - 1440x2560";
+	
+	@Override
+	protected PlatformType getPlatformType() {
+		return PlatformType.ANDROID;
+	}
 
-	@Before
-	public void setUp() throws Exception {
+	@Override
+	protected DesiredCapabilities getCapabilities() {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "6.0");
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
 		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
-		URL url = new URL("http://127.0.0.1:4723/wd/hub");
-		driver = new AndroidDriver<>(url, capabilities);
-		baseUrl = "http://www.target.com/";
+		return capabilities;
 	}
-
-	@Test
-	public void testTargetMobileThreeSpeakersNew() throws Exception {
-		driver.get(baseUrl + "/");
-		driver.findElement(By.id("searchLabel")).click();
-		driver.findElement(By.id("search")).clear();
-		driver.findElement(By.id("search")).sendKeys("speakers");
-		driver.findElement(By.xpath("(//button[@id='searchReset'])[2]")).click();
-		for (int second = 0;; second++) {
-			if (second >= TIMEOUT)
-				fail("timeout");
-			try {
-				if ("“speakers”".equals(
-						driver.findElement(By.xpath("//div[@id='slp-facet-wrap']/section/div/div/h1")).getText()))
-					break;
-			} catch (Exception e) {
-			}
-			Thread.sleep(1000);
-		}
-
-		driver.findElement(By.xpath("(//a[contains(text(),'Bose 251 Environmental Outdoor Speaker Sys...')])[2]"))
-				.click();
-		for (int second = 0;; second++) {
-			if (second >= TIMEOUT)
-				fail("timeout");
-			try {
-				if ("Bose 251 Environmental Outdoor Speaker System - Black (24653)"
-						.equals(driver.findElement(By.cssSelector("p.details--title")).getText()))
-					break;
-			} catch (Exception e) {
-			}
-			Thread.sleep(1000);
-		}
-
-		new Select(driver.findElement(By.id("sbc-quantity-picker"))).selectByVisibleText("2");
-		driver.findElement(By.xpath("//div[@id='AddToCartAreaId']/div/div/button")).click();
-		for (int second = 0;; second++) {
-			if (second >= TIMEOUT)
-				fail("timeout");
-			try {
-				if ("added to cart".equals(driver
-						.findElement(By.xpath("//div[@id='block-ATC']/div[2]/div/div[2]/div/div/div[2]/h2")).getText()))
-					break;
-			} catch (Exception e) {
-			}
-			Thread.sleep(1000);
-		}
-
-		driver.findElement(By.xpath("//button[@type='button']")).click();
-		for (int second = 0;; second++) {
-			if (second >= TIMEOUT)
-				fail("timeout");
-			try {
-				if ("cart total: $831.98"
-						.equals(driver.findElement(By.xpath("//section[@id='cart-page']/div/div/h1")).getText()))
-					break;
-			} catch (Exception e) {
-			}
-			Thread.sleep(1000);
-		}
-
-		assertEquals("Bose 251 Environmental Outdoor Speaker System - Black (24653)", driver
-				.findElement(By.linkText("Bose 251 Environmental Outdoor Speaker System - Black (24653)")).getText());
-		assertEquals("$799.98", driver.findElement(By.cssSelector("span.cartItem--price")).getText());
-		driver.findElement(By.xpath("//div/div[2]/div/button")).click();
-		for (int second = 0;; second++) {
-			if (second >= TIMEOUT)
-				fail("timeout");
-			try {
-				if ("remove this item from your cart?"
-						.equals(driver.findElement(By.xpath("//div[@id='basicModal']/div[2]/div/div/h2")).getText())) {
-					break;
-				}
-
-			} catch (Exception e) {
-			}
-			Thread.sleep(1000);
-		}
-
-		driver.findElement(By.xpath("//div[2]/div/div[2]/button")).click();
-		for (int second = 0;; second++) {
-			if (second >= TIMEOUT)
-				fail("timeout");
-			try {
-				if ("your cart is empty".equals(driver.findElement(By.cssSelector("h1.title-text.alpha")).getText()))
-					break;
-			} catch (Exception e) {
-			}
-			Thread.sleep(1000);
-		}
-
-		assertEquals("your cart is empty", driver.findElement(By.cssSelector("h1.title-text.alpha")).getText());
-	}
-
-	@After
-	public void tearDown() throws Exception {
-		driver.quit();
-		String verificationErrorString = verificationErrors.toString();
-		if (!"".equals(verificationErrorString)) {
-			fail(verificationErrorString);
-		}
-	}
+	
 }
