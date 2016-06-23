@@ -9,11 +9,10 @@ These instructions assume Eclipse as an IDE and that Maven is installed on the s
 1. Open Eclipse and create a new Java Project
 
 ## Mobile Web Application Testing
-To run the mobile web app testing example for Android you will need to install [http://appium.io/] (Appium) and [https://www.genymotion.com/] (Genymotion). Appium is open source. Genymotion requires an account but the free version is all that is needed to run the examples as written
+To run the mobile web app testing example for Android you will need to install [Appium](http://appium.io/]) and [Genymotion](https://www.genymotion.com/). Appium is open source. Genymotion requires an account but the free version is all that is needed to run the examples as written
 
 To run the mobile web app testing example for iOS you will need a Mac with the latest version of XCode installed.
 
 Mobile web application examples are
 * `com.coveros.training.mtw.appium.AndroidChromeExample`
 * `com.coveros.training.mtw.appium.IosSafariExample`
-
