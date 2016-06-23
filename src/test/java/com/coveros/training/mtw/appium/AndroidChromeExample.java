@@ -8,27 +8,13 @@ import java.net.URL;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
-import io.github.bonigarcia.wdm.MarionetteDriverManager;
-import io.netty.handler.codec.http.HttpRequest;
-import io.netty.handler.codec.http.HttpResponse;
-import net.lightbody.bmp.BrowserMobProxy;
-import net.lightbody.bmp.BrowserMobProxyServer;
-import net.lightbody.bmp.client.ClientUtil;
-import net.lightbody.bmp.filters.RequestFilter;
-import net.lightbody.bmp.util.HttpMessageContents;
-import net.lightbody.bmp.util.HttpMessageInfo;
 
 /**
  * This is an example of how to run a mobile web app test using appium and a
@@ -43,9 +29,9 @@ import net.lightbody.bmp.util.HttpMessageInfo;
  * device
  * <li>Install Chrome on the virtual device.
  * (http://www.apkmirror.com/apk/google-inc/chrome/); Install the latest x86
- * version.
- * <li>Start Appium in Android mode
- * <li>Start the virtual device
+ * version. Drag and drop the APK onto the virtual device or use 'adb install'
+ * <li>Start Appium in Android mode. All default settings should be fine.
+ * <li>Start the virtual device. Ensure there is only one device running.
  * <li>Run this test
  * 
  * 

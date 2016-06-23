@@ -26,7 +26,8 @@ import io.appium.java_client.remote.MobileCapabilityType;
  * <p>
  * <li>Only works on a Mac
  * <li>Install latest version of XCode
- * <li>Start Appium in iOS mode
+ * <li>Start Appium in iOS mode; default settings should be OK
+ * <li>Run this test.
  * 
  * @author brian
  *
