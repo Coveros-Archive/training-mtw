@@ -1,9 +1,7 @@
 package com.coveros.training.mtw.appium;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 /**
@@ -23,9 +21,9 @@ import io.appium.java_client.remote.MobileCapabilityType;
  *
  */
 public final class IosSafariExample extends MobileWebTestExample {
-	
-	private static final String DEVICE_NAME = "iPhone 5";
-	
+
+	private static final String DEVICE_NAME = "iPhone 6";
+
 	@Override
 	protected PlatformType getPlatformType() {
 		return PlatformType.IOS;
@@ -35,6 +33,7 @@ public final class IosSafariExample extends MobileWebTestExample {
 	protected DesiredCapabilities getCapabilities() {
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
+		desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.3");
 		desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
 		return desiredCapabilities;
 	}
