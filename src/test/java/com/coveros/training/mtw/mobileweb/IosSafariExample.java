@@ -1,4 +1,4 @@
-package com.coveros.training.mtw.appium;
+package com.coveros.training.mtw.mobileweb;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -26,7 +26,7 @@ public final class IosSafariExample extends MobileWebTestExample {
 
 	@Override
 	protected PlatformType getPlatformType() {
-		return PlatformType.IOS;
+		return PlatformType.LOCAL;
 	}
 
 	@Override
@@ -35,6 +35,7 @@ public final class IosSafariExample extends MobileWebTestExample {
 		desiredCapabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
 		desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.3");
 		desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
+		desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
 		return desiredCapabilities;
 	}
 

@@ -1,4 +1,4 @@
-package com.coveros.training.mtw.appium;
+package com.coveros.training.mtw.mobileweb;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -30,7 +30,7 @@ public class ParameterizedIosExample extends MobileWebTestExample {
 
 	@Override
 	protected PlatformType getPlatformType() {
-		return PlatformType.IOS;
+		return PlatformType.LOCAL;
 	}
 
 	@Override
@@ -39,6 +39,7 @@ public class ParameterizedIosExample extends MobileWebTestExample {
 		desiredCapabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
 		desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, this.platformVersion);
 		desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, this.device);
+		desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
 		return desiredCapabilities;
 	}
 

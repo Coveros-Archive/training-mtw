@@ -1,4 +1,4 @@
-package com.coveros.training.mtw.appium;
+package com.coveros.training.mtw.mobileweb;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -45,7 +45,7 @@ public final class AndroidChromeExample extends MobileWebTestExample {
 	
 	@Override
 	protected PlatformType getPlatformType() {
-		return PlatformType.ANDROID;
+		return PlatformType.LOCAL;
 	}
 
 	@Override

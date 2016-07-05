@@ -29,6 +29,14 @@
 			<version>[1.0.0,)</version>
 			<scope>test</scope>
 		</dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.saucelabs</groupId> -->
+<!-- 			<artifactId>saucerest</artifactId> -->
+<!-- 			<version>1.0.27</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+
 		<dependency>
 			<groupId>io.appium</groupId>
 			<artifactId>java-client</artifactId>
