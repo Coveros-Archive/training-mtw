@@ -3,6 +3,7 @@ package com.coveros.training.mtw.sauce;
 import java.util.LinkedList;
 
 import org.junit.Rule;
+import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -34,6 +35,7 @@ public class MobileWebSauceParameterized extends MobileWebTestExample implements
 	public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(
 			SauceProperties.getString(SauceProperties.USER_NAME),
 			SauceProperties.getString(SauceProperties.ACCESS_KEY));
+
 	/**
 	 * JUnit Rule which will mark the Sauce Job as passed/failed when the test
 	 * succeeds or fails.
@@ -41,6 +43,8 @@ public class MobileWebSauceParameterized extends MobileWebTestExample implements
 	@Rule
 	public SauceOnDemandTestWatcher resultReportingTestWatcher = new SauceOnDemandTestWatcher(this, authentication);
 
+	@Rule
+	public TestName testName = new TestName();
 	/**
 	 * Represents the browser to be used as part of the test run.
 	 */
@@ -120,7 +124,9 @@ public class MobileWebSauceParameterized extends MobileWebTestExample implements
 		caps.setCapability("platformVersion", this.osVersion);
 		caps.setCapability("platformName", this.platformName);
 		caps.setCapability("browserName", this.browser);
-		caps.setCapability("name", "Automated Sauce Test");
+		caps.setCapability("name",
+				testName.getMethodName() + " [" + browser + " on "+ platformName + " " + osVersion + "]");
+
 		return caps;
 
 	}
