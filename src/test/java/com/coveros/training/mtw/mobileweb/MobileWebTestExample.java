@@ -40,7 +40,7 @@ public abstract class MobileWebTestExample {
 		LOCAL, SAUCE
 	}
 
-	private String itemName = "Innovative Technologies Premium Bluetooth";
+	private String itemName = "Innovative Technology Premium Bluetooth";
 
 	private String itemType = "speakers";
 
