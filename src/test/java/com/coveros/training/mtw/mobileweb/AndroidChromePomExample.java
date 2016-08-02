@@ -1,24 +1,16 @@
 package com.coveros.training.mtw.mobileweb;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.net.URL;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.Select;
 
-import io.appium.java_client.android.AndroidDriver;
+import com.coveros.training.mtw.selenium.TargetShoppingCartTest;
+import com.coveros.training.mtw.selenium.TargetShoppingCartTest.PlatformType;
+
 import io.appium.java_client.remote.MobileCapabilityType;
 
 /**
  * This is an example of how to run a mobile web app test using appium and a
- * Genymotion Samsung Galaxy 6 Emulator.
+ * Genymotion Samsung Galaxy 6 Emulator. This version runs the test using the
+ * Page Objet Model (POM) definition of the test.
  * <p>
  * The Selenium steps were recorded using Firefox SeleniumIDE
  * <p>
@@ -38,11 +30,11 @@ import io.appium.java_client.remote.MobileCapabilityType;
  * @author brian
  *
  */
-public final class AndroidChromeExample extends MobileWebTestExample {
+public final class AndroidChromePomExample extends TargetShoppingCartTest {
 
 	// Change this if using a different virtual device.
 	private static final String DEVICE_NAME = "Samsung Galaxy S6 - 6.0.0 - API 23 - 1440x2560";
-	
+
 	@Override
 	protected PlatformType getPlatformType() {
 		return PlatformType.LOCAL;
@@ -57,5 +49,5 @@ public final class AndroidChromeExample extends MobileWebTestExample {
 		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 		return capabilities;
 	}
-	
+
 }

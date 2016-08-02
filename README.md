@@ -1,5 +1,5 @@
 # Mobile Application Testing Example Code
-Example selenium and appium test code for the training class "Testing Mobile Webapps in the Cloud with Selenium" (aka the Mobile Test Workshop aka the Mobile Lab)
+Example selenium and appium test code for the training class "Testing Mobile Webapps in the Cloud with Selenium" (aka the Mobile Test Automation Workshop aka the Mobile Lab)
 
 ## Setup Instructions
 These instructions assume Eclipse as an IDE and that Maven is installed on the system.

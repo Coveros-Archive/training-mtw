@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.coveros.training.SauceProperties;
-import com.coveros.training.mtw.mobileweb.MobileWebTestExample;
+import com.coveros.training.mtw.selenium.TargetShoppingCartTest;
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 import com.saucelabs.junit.ConcurrentParameterized;
@@ -24,7 +24,7 @@ import com.saucelabs.junit.SauceOnDemandTestWatcher;
  * @author Ross Rowe
  */
 @RunWith(ConcurrentParameterized.class)
-public class MobileWebSauceParameterized extends MobileWebTestExample implements SauceOnDemandSessionIdProvider {
+public class MobileWebSauceParameterized extends TargetShoppingCartTest implements SauceOnDemandSessionIdProvider {
 
 	/**
 	 * Constructs a {@link SauceOnDemandAuthentication} instance using the

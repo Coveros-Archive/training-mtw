@@ -6,7 +6,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = { "src/cucumber/resources/com/coveros/training/mtw/cucumber/shoppingcartios.feature" })
+@CucumberOptions(features = { "src/cucumber/resources/com/coveros/training/mtw/cucumber/" }, tags = { "@browser" })
 /**
  * Simple JUnit Cucumber test runner. Runs features found in the directory
  * specified by the cucumber options
@@ -14,6 +14,6 @@ import cucumber.api.junit.Cucumber;
  * @author brian
  *
  */
-public class IosCucumberTestRunner {
+public class BrowserTests {
 
 }

@@ -17,34 +17,37 @@ public abstract class MobileWebCucumberTest {
 		}
 	}
 
+	protected void finishTest() {
+		if (getDriver() != null) {
+			getDriver().close();
+			getDriver().quit();
+		} else {
+			System.out.println("Tried to quit but driver was null");
+		}
+	}
+
 	protected final void error(Exception e, String message, boolean quit) throws Exception {
 
 		e.printStackTrace();
 
 		if (quit) {
-			if (getDriver() != null) {
-				getDriver().close();
-				getDriver().quit();
-			} else {
-				System.out.println("Tried to quit but driver was null");
-			}
+			finishTest();
 			throw e;
 		} else {
 			e.printStackTrace();
 		}
-		
 
 	}
 
-	protected final void error(Exception e, boolean quit) throws Exception{
+	protected final void error(Exception e, boolean quit) throws Exception {
 		error(e, e.getMessage(), quit);
 	}
 
-	protected final void error(Exception e, String message) throws Exception{
+	protected final void error(Exception e, String message) throws Exception {
 		this.error(e, message, false);
 	}
 
-	protected final void error(Exception e) throws Exception{
+	protected final void error(Exception e) throws Exception {
 		error(e, e.getMessage());
 	}
 }

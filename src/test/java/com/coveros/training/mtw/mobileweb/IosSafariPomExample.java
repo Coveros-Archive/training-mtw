@@ -2,6 +2,9 @@ package com.coveros.training.mtw.mobileweb;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import com.coveros.training.mtw.selenium.TargetShoppingCartTest;
+import com.coveros.training.mtw.selenium.TargetShoppingCartTest.PlatformType;
+
 import io.appium.java_client.remote.MobileCapabilityType;
 
 /**
@@ -20,7 +23,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
  * @author brian
  *
  */
-public final class IosSafariExample extends MobileWebTestExample {
+public final class IosSafariPomExample extends TargetShoppingCartTest {
 
 	private static final String DEVICE_NAME = "iPhone 6";
 
