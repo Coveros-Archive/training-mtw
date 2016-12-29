@@ -10,8 +10,8 @@ These instructions assume Eclipse as an IDE and that Maven is installed on the s
 
 ## Mobile Web Application Testing
 Mobile web application examples are
-* `com.coveros.training.mtw.mobileweb.AndroidChromeExample` (Android)
-* `com.coveros.training.mtw.mobileweb.IosSafariExample` (iOS)
+* `com.coveros.training.mtw.mobileweb.AndroidChromePomExample` (Android)
+* `com.coveros.training.mtw.mobileweb.IosSafariPomExample` (iOS)
 
 To run the mobile web app testing examples you will need to install [Appium](http://appium.io/]). Appium is open source.
 
@@ -27,3 +27,10 @@ To run the native app testing examples you will need to install [Appium](http://
 
 To run the iOS native app testing example you will need a Mac running the latest version of XCode installed in order to get the iOS Simulator. No third party emulation product is required. The app under test is available from the [Appium GitHub Repository](https://github.com/appium/ios-uicatalog). Place it in the `apps` folder in this project in order to run the test.
 
+## Cucumber Tests
+This repository also contains examples of how these same tests may be organized into Cucumber Step Definitions.
+
+The following are runnable cucumber tests:
+
+* `com.coveros.training.mtw.cucumber.BrowserTests` (Responsive Desktop Browsers)
+* `com.coveros.training.mtw.cucumber.MobileWebTests` (Mobile Device Browsers)

@@ -1,8 +1,7 @@
 package com.coveros.training.mtw.cucumber;
 
-import org.openqa.selenium.WebDriver;
-
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 
 public abstract class MobileWebCucumberTest {
 
@@ -18,12 +17,12 @@ public abstract class MobileWebCucumberTest {
 	}
 
 	protected void finishTest() {
-		if (getDriver() != null) {
-			getDriver().close();
-			getDriver().quit();
-		} else {
-			System.out.println("Tried to quit but driver was null");
-		}
+		// if (getDriver() != null) {
+		// getDriver().close();
+		// getDriver().quit();
+		// } else {
+		// System.out.println("Tried to quit but driver was null");
+		// }
 	}
 
 	protected final void error(Exception e, String message, boolean quit) throws Exception {
@@ -50,4 +49,6 @@ public abstract class MobileWebCucumberTest {
 	protected final void error(Exception e) throws Exception {
 		error(e, e.getMessage());
 	}
+	
+	
 }

@@ -1,7 +1,6 @@
 package com.coveros.training.mat.compatibility.nativeapp;
 
 import static org.junit.Assert.assertEquals;
-
 import static org.junit.Assert.fail;
 
 import java.io.File;
@@ -10,20 +9,16 @@ import java.net.URL;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.ErrorHandler;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.coveros.training.SauceProperties;
 import com.saucelabs.common.SauceOnDemandAuthentication;
-import com.saucelabs.junit.SauceOnDemandTestWatcher;
 
 import io.appium.java_client.android.AndroidDriver;
 

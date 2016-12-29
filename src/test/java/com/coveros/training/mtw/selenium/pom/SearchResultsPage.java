@@ -18,7 +18,7 @@ public class SearchResultsPage extends TargetWebsiteSearchablePage {
 	private WebElement searchTitle;
 
 	public ProductDetailsPage selectProduct(String productName) throws PageLoadException {
-		getSelenium().scrollToClick(Locator.PARTIAL_LINK, productName);
+		getSelenium().tapElement(Locator.PARTIAL_LINK, productName);
 		return factory.newPage(ProductDetailsPage.class);
 	}
 

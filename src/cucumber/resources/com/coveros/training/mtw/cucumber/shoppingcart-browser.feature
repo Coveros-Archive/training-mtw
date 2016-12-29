@@ -9,6 +9,6 @@ Feature: The Shopping Cart
 
     Examples: 
       | device  | platformVersion | itemName                                  | itemType | count |
-      | browser |         Firefox | Sonos Compact Smart Speaker For Streaming | speakers |     2 |
-      | browser |      Chrome     | Innovative Technology Premium Bluetooth   | speakers |     3 |
-      | browser |      Safari     | Latte Communications DeLite LED Lantern   | speakers |     2 |
+      | browser |      Firefox    | JBL Flip 3 Splashproof Bluetooth Speaker  | speakers |     2 |
+      | browser |      Chrome     | JBL Flip 3 Splashproof Bluetooth Speaker  | speakers |     3 |
+      | browser |      Safari     | JBL Flip 3 Splashproof Bluetooth Speaker  | speakers |     2 |

@@ -102,6 +102,8 @@ public class ShoppingCartStepDefinitions extends MobileWebCucumberTest {
 					driver = new ChromeDriver(DesiredCapabilities.chrome());
 					driver.manage().deleteAllCookies();
 					driver.manage().window().setSize(new Dimension(375, 1000));
+				} else {
+					fail("Unsupported browser: " + platformVersion);
 				}
 			} else {
 				fail("Unrecognized device " + device);
