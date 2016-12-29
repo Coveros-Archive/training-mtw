@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.MarionetteDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.safari.SafariDriver;
 
 import com.coveros.test.selenium.pom.PageObjectFactory;
 import com.coveros.training.SauceProperties;
@@ -102,8 +103,11 @@ public class ShoppingCartStepDefinitions extends MobileWebCucumberTest {
 					driver = new ChromeDriver(DesiredCapabilities.chrome());
 					driver.manage().deleteAllCookies();
 					driver.manage().window().setSize(new Dimension(375, 1000));
-				} else {
-					fail("Unsupported browser: " + platformVersion);
+				} else if (platformVersion.equalsIgnoreCase("Safari")){
+					capabilities = DesiredCapabilities.safari();
+					driver = new SafariDriver(capabilities);
+					driver.manage().deleteAllCookies();
+					driver.manage().window().setSize(new Dimension(375, 1000));
 				}
 			} else {
 				fail("Unrecognized device " + device);
