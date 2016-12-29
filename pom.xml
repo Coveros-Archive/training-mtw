@@ -30,17 +30,23 @@
 			<scope>test</scope>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.saucelabs</groupId> -->
-<!-- 			<artifactId>saucerest</artifactId> -->
-<!-- 			<version>1.0.27</version> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.saucelabs</groupId> -->
+		<!-- <artifactId>saucerest</artifactId> -->
+		<!-- <version>1.0.27</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>io.appium</groupId>
 			<artifactId>java-client</artifactId>
 			<version>3.1.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-core -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-core</artifactId>
+			<version>1.2.4</version>
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
@@ -55,9 +61,14 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>1.2.4</version>
+		</dependency>
+		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
-			<version>1.4.6</version>
+			<version>1.4.7</version>
 		</dependency>
 	</dependencies>
 

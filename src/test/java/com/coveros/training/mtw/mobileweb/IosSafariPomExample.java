@@ -3,7 +3,6 @@ package com.coveros.training.mtw.mobileweb;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.coveros.training.mtw.selenium.TargetShoppingCartTest;
-import com.coveros.training.mtw.selenium.TargetShoppingCartTest.PlatformType;
 
 import io.appium.java_client.remote.MobileCapabilityType;
 
@@ -36,9 +35,10 @@ public final class IosSafariPomExample extends TargetShoppingCartTest {
 	protected DesiredCapabilities getCapabilities() {
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
-		desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.3");
+		desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10.2");
 		desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
 		desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+		desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"XCUITest");
 		return desiredCapabilities;
 	}
 

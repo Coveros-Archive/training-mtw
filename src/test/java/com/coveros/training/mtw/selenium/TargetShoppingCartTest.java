@@ -18,6 +18,7 @@ import org.openqa.selenium.firefox.MarionetteDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import com.coveros.test.selenium.pom.PageObjectFactory;
 import com.coveros.training.SauceProperties;
 import com.coveros.training.mtw.selenium.pom.ConfirmRemoveItemDialog;
 import com.coveros.training.mtw.selenium.pom.EmptyCartPage;
@@ -27,7 +28,6 @@ import com.coveros.training.mtw.selenium.pom.SearchResultsPage;
 import com.coveros.training.mtw.selenium.pom.ShoppingCartConfirmDialog;
 import com.coveros.training.mtw.selenium.pom.ShoppingCartPage;
 import com.coveros.training.mtw.selenium.pom.TargetHomePage;
-import com.coveros.training.mtw.selenium.pom.TargetWebsitePageObjectFactory;
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.saucerest.SauceREST;
 
@@ -82,10 +82,10 @@ public abstract class TargetShoppingCartTest {
 	 */
 	protected abstract DesiredCapabilities getCapabilities();
 
-	@BeforeClass
-	public static void setupClass() {
-		MarionetteDriverManager.getInstance().setup();
-	}
+//	@BeforeClass
+//	public static void setupClass() {
+//		MarionetteDriverManager.getInstance().setup();
+//	}
 
 	@Before
 	public final void setUp() throws Exception {
@@ -109,7 +109,9 @@ public abstract class TargetShoppingCartTest {
 			this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 			break;
 		case FIREFOX:
-			this.driver = new MarionetteDriver(getCapabilities());
+			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+			capabilities.setCapability("marionette", true);
+			driver = new MarionetteDriver(capabilities);
 			driver.manage().deleteAllCookies();
 			driver.manage().window().setSize(new Dimension(375, 1000));
 			break;
@@ -119,9 +121,11 @@ public abstract class TargetShoppingCartTest {
 			driver.manage().window().setSize(new Dimension(375, 1000));
 			break;
 		}
-		TargetWebsitePageObjectFactory factory = TargetWebsitePageObjectFactory.newInstance(driver);
+		// TargetWebsitePageObjectFactory factory =
+		// TargetWebsitePageObjectFactory.newInstance(driver);
+		PageObjectFactory factory = PageObjectFactory.newInstance(driver, "http://target.com");
 		// Navigate to the default homepage
-		homePage = factory.newTargetHomePage();
+		homePage = factory.newPage(TargetHomePage.class);
 	}
 
 	private void failTest(String message) {

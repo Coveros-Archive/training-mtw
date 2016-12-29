@@ -3,3 +3,6 @@
 
 SAUCE_USER_NAME=sauce_user_name
 SAUCE_ACCESS_KEY=sauce_private_key
+
+#Valid values are windows, mac, linux
+OS=windows

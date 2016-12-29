@@ -19,21 +19,23 @@ import com.coveros.training.mtw.selenium.SeleniumMobileHelper.Locator;
  */
 public final class ShoppingCartPage extends TargetWebsiteSearchablePage {
 
-	static ShoppingCartPage newInstance(SeleniumMobileHelper selenium, TargetWebsitePageObjectFactory factory)
-			throws PageLoadException {
-		// Make sure that at least the title text element has loaded properly
-		// before returning the new page object
-		// Note that we are not validating that the page is correct.
-		WebElement titleTextElement = selenium.isElementPresentWithExplicitWait(Locator.CSS, ".title--text");
-		if (titleTextElement == null) {
-			throw new PageLoadException("The shopping cart page did not load properly");
-		}
+	@Override
+	protected boolean checkInitialPageState() {
+//		// Make sure that at least the title text element has loaded properly
+//		// before returning the new page object
+//		// Note that we are not validating that the page is correct.
+//		WebElement titleTextElement = getSelenium().isElementPresentWithExplicitWait(Locator.CSS, ".title--text");
+//		if (titleTextElement == null) {
+//			// throw new PageLoadException("The shopping cart page did not load
+//			// properly");
+//		}
 
-		return new ShoppingCartPage(selenium, factory);
+		return super.checkInitialPageState();
 	}
 
 	/**
-	 * Get the 
+	 * Get the
+	 * 
 	 * @return
 	 */
 	public String getCartSummaryText() {
@@ -43,10 +45,6 @@ public final class ShoppingCartPage extends TargetWebsiteSearchablePage {
 		} else {
 			return null;
 		}
-	}
-
-	private ShoppingCartPage(SeleniumMobileHelper selenium, TargetWebsitePageObjectFactory factory) {
-		super(selenium, factory);
 	}
 
 	public ConfirmRemoveItemDialog removeFirstItemFromShoppingCart() throws PageLoadException {
@@ -61,7 +59,7 @@ public final class ShoppingCartPage extends TargetWebsiteSearchablePage {
 		} else {
 			throw new PageLoadException("Could not find appropriate remove button on page");
 		}
-		return getFactory().newConfirmRemoveItemDialog(this);
+		return factory.newPage(ConfirmRemoveItemDialog.class);
 	}
 
 	/**
@@ -109,6 +107,6 @@ public final class ShoppingCartPage extends TargetWebsiteSearchablePage {
 
 	public ConfirmRemoveItemDialog removeNthItemFromCart(int n) throws PageLoadException {
 		getSelenium().tapElement(Locator.XPATH, "//div[" + (n + 1) + "]/div/button");
-		return getFactory().newConfirmRemoveItemDialog(this);
+		return factory.newPage(ConfirmRemoveItemDialog.class);
 	}
 }

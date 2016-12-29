@@ -1,5 +1,6 @@
 package com.coveros.training.mtw.selenium.pom;
 
+import com.coveros.test.selenium.pom.PageObject;
 import com.coveros.training.mtw.selenium.SeleniumMobileHelper;
 
 /**
@@ -8,42 +9,17 @@ import com.coveros.training.mtw.selenium.SeleniumMobileHelper;
  * @author brian
  *
  */
-public abstract class TargetWebsitePageObject {
-	private SeleniumMobileHelper selenium;
-	private TargetWebsitePageObjectFactory factory;
+public abstract class TargetWebsitePageObject extends PageObject {
 
-	public TargetWebsitePageObject(SeleniumMobileHelper selenium, TargetWebsitePageObjectFactory factory) {
-		this.setSelenium(selenium);
-		this.setFactory(factory);
-	}
+	private SeleniumMobileHelper selenium;
 
 	/**
 	 * @return the selenium
 	 */
 	protected SeleniumMobileHelper getSelenium() {
+		if (selenium == null && driver != null) {
+			selenium = new SeleniumMobileHelper(driver);
+		}
 		return selenium;
-	}
-
-	/**
-	 * @param selenium
-	 *            the selenium to set
-	 */
-	private void setSelenium(SeleniumMobileHelper selenium) {
-		this.selenium = selenium;
-	}
-
-	/**
-	 * @return the factory
-	 */
-	protected TargetWebsitePageObjectFactory getFactory() {
-		return factory;
-	}
-
-	/**
-	 * @param factory
-	 *            the factory to set
-	 */
-	private void setFactory(TargetWebsitePageObjectFactory factory) {
-		this.factory = factory;
 	}
 }

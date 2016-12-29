@@ -9,6 +9,6 @@ Feature: The Shopping Cart
 
     Examples: 
       | device  | platformVersion | itemName                                  | itemType | count |
-      | Firefox |             9.3 | Sonos Compact Smart Speaker For Streaming | speakers |     2 |
-      | Chrome  |             9.3 | Innovative Technology Premium Bluetooth   | speakers |     3 |
-      | Safari  |             8.1 | Latte Communications DeLite LED Lantern   | speakers |     2 |
+      | browser |         Firefox | Sonos Compact Smart Speaker For Streaming | speakers |     2 |
+      | browser |      Chrome     | Innovative Technology Premium Bluetooth   | speakers |     3 |
+      | browser |      Safari     | Latte Communications DeLite LED Lantern   | speakers |     2 |

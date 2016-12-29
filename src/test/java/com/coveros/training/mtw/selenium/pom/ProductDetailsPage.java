@@ -16,24 +16,25 @@ import com.coveros.training.mtw.selenium.SeleniumMobileHelper.Locator;
  */
 public final class ProductDetailsPage extends TargetWebsiteSearchablePage {
 
-	static ProductDetailsPage newInstance(SeleniumMobileHelper selenium, TargetWebsitePageObjectFactory factory,
-			String productName) throws PageLoadException {
-		WebElement addToCartButton = selenium.isElementPresentWithExplicitWait(Locator.CSS, ".sbc-add-to-cart");
-		WebElement addToRegistryButton = selenium.isElementPresentWithExplicitWait(Locator.CSS, ".sbc-add-to-registry");
-		WebElement picker = selenium.isElementPresentWithExplicitWait(Locator.ID, "sbc-quantity-picker");
-		if (addToCartButton == null || addToRegistryButton == null || picker == null) {
-			throw new PageLoadException("Product Details Page failed to load properly for product: " + productName);
-		}
-		if (!selenium.isLocalBrowserTest()) {
-			if (!selenium.isTextMatchingElementWithExplicitWait(Locator.CSS, "p.details--title", productName)) {
-				throw new PageLoadException("Product Details Page failed to load properly for product: " + productName);
-			}
-		}
-		return new ProductDetailsPage(selenium, factory);
-	}
-
-	private ProductDetailsPage(SeleniumMobileHelper selenium, TargetWebsitePageObjectFactory factory) {
-		super(selenium, factory);
+	@Override
+	protected boolean checkInitialPageState() {
+//		WebElement addToCartButton = getSelenium().isElementPresentWithExplicitWait(Locator.CSS, ".sbc-add-to-cart");
+//		WebElement addToRegistryButton = getSelenium().isElementPresentWithExplicitWait(Locator.CSS,
+//				".sbc-add-to-registry");
+//		WebElement picker = getSelenium().isElementPresentWithExplicitWait(Locator.ID, "sbc-quantity-picker");
+//		if (addToCartButton == null || addToRegistryButton == null || picker == null) {
+//			// throw new PageLoadException("Product Details Page failed to load
+//			// properly for product: " + productName);
+//		}
+//		if (!getSelenium().isLocalBrowserTest()) {
+//			// if
+//			// (!getSelenium().isTextMatchingElementWithExplicitWait(Locator.CSS,
+//			// "p.details--title", productName)) {
+//			// //throw new PageLoadException("Product Details Page failed to
+//			// load properly for product: " + productName);
+//			// }
+//		}
+		return super.checkInitialPageState();
 	}
 
 	/**
@@ -56,7 +57,7 @@ public final class ProductDetailsPage extends TargetWebsiteSearchablePage {
 		// "//div[@id='AddToCartAreaId']/div/div/button");
 		getSelenium().tapElement(Locator.CSS, ".sbc-add-to-cart");
 
-		return getFactory().newShoppingCartConfirmDialog(this, quantity);
+		return factory.newPage(ShoppingCartConfirmDialog.class);
 	}
 
 }

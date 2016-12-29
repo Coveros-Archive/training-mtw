@@ -3,7 +3,6 @@ package com.coveros.training.mtw.mobileweb;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.coveros.training.mtw.selenium.TargetShoppingCartTest;
-import com.coveros.training.mtw.selenium.TargetShoppingCartTest.PlatformType;
 
 import io.appium.java_client.remote.MobileCapabilityType;
 
@@ -33,7 +32,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 public final class AndroidChromePomExample extends TargetShoppingCartTest {
 
 	// Change this if using a different virtual device.
-	private static final String DEVICE_NAME = "Samsung Galaxy S6 - 6.0.0 - API 23 - 1440x2560";
+	private static final String DEVICE_NAME = "Samsung Galaxy S6 - 6.0.0 - API 23 - 1440x2560_1";
 
 	@Override
 	protected PlatformType getPlatformType() {

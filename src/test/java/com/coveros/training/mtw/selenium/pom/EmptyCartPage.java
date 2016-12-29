@@ -1,6 +1,5 @@
 package com.coveros.training.mtw.selenium.pom;
 
-import com.coveros.training.mtw.selenium.SeleniumMobileHelper;
 import com.coveros.training.mtw.selenium.SeleniumMobileHelper.Locator;
 
 /**
@@ -11,15 +10,16 @@ import com.coveros.training.mtw.selenium.SeleniumMobileHelper.Locator;
  */
 public class EmptyCartPage extends TargetWebsiteSearchablePage {
 
-	static EmptyCartPage newInstance(SeleniumMobileHelper selenium, TargetWebsitePageObjectFactory factory)
-			throws PageLoadException {
-		selenium.throwIfTextNotFoundInElement(Locator.CSS, "h1.title-text.alpha", "your cart is empty",
-				"Timeout or unexpected text looking for empty cart message");
-		return new EmptyCartPage(selenium, factory);
-	}
-
-	private EmptyCartPage(SeleniumMobileHelper selenium, TargetWebsitePageObjectFactory factory) {
-		super(selenium, factory);
+	@Override
+	protected boolean checkInitialPageState() {
+//		try {
+//			getSelenium().throwIfTextNotFoundInElement(Locator.CSS, "h1.title-text.alpha", "your cart is empty",
+//					"Timeout or unexpected text looking for empty cart message");
+//		} catch (PageLoadException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		return super.checkInitialPageState();
 	}
 
 	public String getEmptyCartMessageText() {

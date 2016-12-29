@@ -18,37 +18,57 @@ public final class TargetWebsitePageObjectFactory {
 		return new TargetWebsitePageObjectFactory(new SeleniumMobileHelper(driver, "http://www.target.com"));
 	}
 
+	public <T extends TargetWebsitePageObject> T newPage(Class<T> pageClass) throws PageLoadException {
+		T pageObject;
+		try {
+			pageObject = pageClass.newInstance();
+			pageObject.init(selenium, this);
+			return pageObject;
+		} catch (InstantiationException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
 	private TargetWebsitePageObjectFactory(SeleniumMobileHelper selenium) {
 		this.selenium = selenium;
 	}
 
-	public EmptyCartPage newEmptyCartPage() throws PageLoadException {
-		return EmptyCartPage.newInstance(selenium, this);
-	}
-
-	public TargetHomePage newTargetHomePage() {
-		return TargetHomePage.newInstance(selenium, this);
-	}
-
-	public SearchResultsPage newSearchResultsPage(String searchTerm) throws PageLoadException {
-		return SearchResultsPage.newInstance(selenium, this, searchTerm);
-
-	}
-
-	public ConfirmRemoveItemDialog newConfirmRemoveItemDialog(ShoppingCartPage parent) throws PageLoadException {
-		return ConfirmRemoveItemDialog.newInstance(selenium, this, parent);
-	}
-
-	public ShoppingCartPage newShoppingCartPage() throws PageLoadException {
-		return ShoppingCartPage.newInstance(selenium, this);
-	}
-
-	public ProductDetailsPage newProductDetailsPage(String productName) throws PageLoadException {
-		return ProductDetailsPage.newInstance(selenium, this, productName);
-	}
-
-	public ShoppingCartConfirmDialog newShoppingCartConfirmDialog(ProductDetailsPage productDetailsPage, int quantity)
-			throws PageLoadException {
-		return ShoppingCartConfirmDialog.newInstance(selenium, this, productDetailsPage, quantity);
-	}
+	// public EmptyCartPage newEmptyCartPage() throws PageLoadException {
+	// return EmptyCartPage.newInstance(selenium, this);
+	// }
+	//
+	// public TargetHomePage newTargetHomePage() {
+	// return TargetHomePage.newInstance(selenium, this);
+	// }
+	//
+	// public SearchResultsPage newSearchResultsPage(String searchTerm) throws
+	// PageLoadException {
+	// return SearchResultsPage.newInstance(selenium, this, searchTerm);
+	//
+	// }
+	//
+	// public ConfirmRemoveItemDialog
+	// newConfirmRemoveItemDialog(ShoppingCartPage parent) throws
+	// PageLoadException {
+	// return ConfirmRemoveItemDialog.newInstance(selenium, this, parent);
+	// }
+	//
+	// public ShoppingCartPage newShoppingCartPage() throws PageLoadException {
+	// return ShoppingCartPage.newInstance(selenium, this);
+	// }
+	//
+	// public ProductDetailsPage newProductDetailsPage(String productName)
+	// throws PageLoadException {
+	// return ProductDetailsPage.newInstance(selenium, this, productName);
+	// }
+	//
+	// public ShoppingCartConfirmDialog
+	// newShoppingCartConfirmDialog(ProductDetailsPage productDetailsPage, int
+	// quantity)
+	// throws PageLoadException {
+	// return ShoppingCartConfirmDialog.newInstance(selenium, this,
+	// productDetailsPage, quantity);
+	// }
 }

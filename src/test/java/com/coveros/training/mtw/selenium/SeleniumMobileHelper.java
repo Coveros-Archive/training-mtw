@@ -16,7 +16,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.coveros.training.mtw.selenium.pom.PageLoadException;
-import com.thoughtworks.selenium.webdriven.commands.Click;
 
 /**
  * Example of how to extract Selenium into helper class.
@@ -34,12 +33,12 @@ public final class SeleniumMobileHelper {
 
 	private int TIMEOUT = 10;
 
-	private String baseUrl;
+	// private String baseUrl;
 
-	public SeleniumMobileHelper(WebDriver driver, String baseUrl) {
+	public SeleniumMobileHelper(WebDriver driver) {
 		this.driver = driver;
-		this.baseUrl = baseUrl;
-		driver.get(baseUrl);
+		// this.baseUrl = baseUrl;
+		// driver.get(baseUrl);
 
 	}
 

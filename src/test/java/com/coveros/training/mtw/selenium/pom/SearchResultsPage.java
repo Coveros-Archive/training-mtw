@@ -1,6 +1,8 @@
 package com.coveros.training.mtw.selenium.pom;
 
-import com.coveros.training.mtw.selenium.SeleniumMobileHelper;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 import com.coveros.training.mtw.selenium.SeleniumMobileHelper.Locator;
 
 /**
@@ -12,20 +14,12 @@ import com.coveros.training.mtw.selenium.SeleniumMobileHelper.Locator;
  */
 public class SearchResultsPage extends TargetWebsiteSearchablePage {
 
-	static SearchResultsPage newInstance(SeleniumMobileHelper selenium, TargetWebsitePageObjectFactory factory,
-			String searchTerm) throws PageLoadException {
-		selenium.throwIfTextNotFoundInElement(Locator.XPATH, "//div[@id='slp-facet-wrap']/section/div/div/h1",
-				"“" + searchTerm + "”", "");
-		return new SearchResultsPage(selenium, factory);
-	}
-
-	private SearchResultsPage(SeleniumMobileHelper selenium, TargetWebsitePageObjectFactory factory) {
-		super(selenium, factory);
-	}
+	@FindBy(xpath = "//div[@id='slp-facet-wrap']/section/div/div/h1")
+	private WebElement searchTitle;
 
 	public ProductDetailsPage selectProduct(String productName) throws PageLoadException {
 		getSelenium().scrollToClick(Locator.PARTIAL_LINK, productName);
-		return getFactory().newProductDetailsPage(productName);
+		return factory.newPage(ProductDetailsPage.class);
 	}
 
 	/**

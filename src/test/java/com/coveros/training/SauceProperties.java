@@ -10,6 +10,7 @@ public class SauceProperties {
 	private static final String BUNDLE_NAME = "com.coveros.training.sauce";
 
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
+	public static final String OS = "OS";
 
 	private SauceProperties() {
 	}
